@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#101418</color>
+    <color name="toolbar_bg">#1C232B</color>
+    <color name="text">#F2F4F7</color>
+    <color name="text_dim">#9AA4B2</color>
+    <color name="accent">#4FA3FF</color>
+    <color name="focus">#4FA3FF</color>
+    <color name="tile_bg">#222B34</color>
+    <color name="cursor_fill">#FFFFFF</color>
+    <color name="cursor_stroke">#000000</color>
+</resources>

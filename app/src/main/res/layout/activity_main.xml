@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <!-- Tab WebViews are added here at runtime, one per tab, only the active one visible. -->
+    <FrameLayout
+        android:id="@+id/web_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Native start page shown when the active tab is on tvbrowser://home -->
+    <FrameLayout
+        android:id="@+id/home_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/home_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/home_empty"
+            android:textColor="@color/text_dim"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <GridView
+            android:id="@+id/home_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawSelectorOnTop="true"
+            android:horizontalSpacing="16dp"
+            android:listSelector="@drawable/grid_selector"
+            android:numColumns="5"
+            android:padding="48dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="16dp" />
+    </FrameLayout>
+
+    <!-- Fullscreen video host -->
+    <FrameLayout
+        android:id="@+id/fullscreen_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+    <!-- Virtual cursor overlay, never intercepts touches -->
+    <net.reconburrito.tvbrowser.input.CursorView
+        android:id="@+id/cursor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Toolbar, hidden by default, toggled with the Menu button -->
+    <HorizontalScrollView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/toolbar_bg"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button android:id="@+id/btn_back" style="@style/ToolbarButton" android:text="@string/btn_back" />
+            <Button android:id="@+id/btn_forward" style="@style/ToolbarButton" android:text="@string/btn_forward" />
+            <Button android:id="@+id/btn_reload" style="@style/ToolbarButton" android:text="@string/btn_reload" />
+            <Button android:id="@+id/btn_home" style="@style/ToolbarButton" android:text="@string/btn_home" />
+
+            <EditText
+                android:id="@+id/url_input"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/focusable_bg"
+                android:hint="@string/url_hint"
+                android:imeOptions="actionGo|flagNoExtractUi"
+                android:inputType="textUri|textNoSuggestions"
+                android:maxLines="1"
+                android:minWidth="300dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@color/text"
+                android:textColorHint="@color/text_dim"
+                android:textSize="18sp" />
+
+            <Button android:id="@+id/btn_tabs" style="@style/ToolbarButton" android:text="@string/btn_tabs" />
+            <Button android:id="@+id/btn_bookmark" style="@style/ToolbarButton" android:text="@string/btn_bookmark" />
+            <Button android:id="@+id/btn_bookmarks" style="@style/ToolbarButton" android:text="@string/btn_bookmarks" />
+            <Button android:id="@+id/btn_history" style="@style/ToolbarButton" android:text="@string/btn_history" />
+            <Button android:id="@+id/btn_ua" style="@style/ToolbarButton" android:text="@string/btn_ua" />
+            <Button android:id="@+id/btn_zoom_out" style="@style/ToolbarButton" android:text="@string/btn_zoom_out" />
+            <Button android:id="@+id/btn_zoom_in" style="@style/ToolbarButton" android:text="@string/btn_zoom_in" />
+            <Button android:id="@+id/btn_more" style="@style/ToolbarButton" android:text="@string/btn_more" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_gravity="bottom"
+        android:max="100"
+        android:visibility="gone" />
+</FrameLayout>
